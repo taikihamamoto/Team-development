@@ -14,3 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', "TopController@index");
+
+Route::get('/loginform.blade.php', "LoginFormController@index");
+
+Route::get('/signup.blade.php', "SignUpController@index");

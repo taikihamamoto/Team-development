@@ -29,7 +29,7 @@
                     <a href="#contact">Contact<br>コンタクト</a>
                   </li>
                   <li class="gnav-item">
-                    <a href="#login">Login<br>ログイン</a>
+                    <a href="loginform.blade.php">Login<br>ログイン</a>
                   </li>
                 </ul>
               </div>
@@ -47,7 +47,7 @@
                 <a href="#contact">Contact<br>コンタクト</a>
               </li>
               <li class="gnav-item">
-                <a href="#login">Login<br>ログイン</a>
+                <a href="loginform.blade.php">Login<br>ログイン</a>
               </li>
             </ul>
           </nav>
@@ -57,9 +57,8 @@
       <main>
         <section id="mv" class="mv-area">
           <h1 class="mv-title">各地のお祭りを支援できる<br class="sp-only">クラウドファウンディングサイト</h1>
-          <button type="button" onclick="location.href='#'" class="btn btn-reserve">ログインはこちら</button>
-          <!--ボタン押したらログインフォームに飛ぶように-->
-        </section>
+              <button type="button" onclick="location.href='loginform.blade.php'" class="btn btn-reserve">ログインはこちら</button>                                                                                
+        </section>                                                                          
     
         <section id="info" class="info-area">
           <div class="inner info-content">

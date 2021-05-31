@@ -9,16 +9,13 @@
 
   <body>
   <form>
-    <h1>ログインはこちら</h1>
+    <h1>Balloon Room</h1>
+    <input placeholder="User Name" type="text"/>
     <input placeholder="Mail Address" type="address"/>
     <input placeholder="Password" type="password"/>
-    <button class="btn">Login</button>
+    <button class="btn">Sign up</button>
+    </button>
     
-  </form>
-  <form>
-    <h1>新規登録はこちら</h1>
-    <button class="btn" type="button" onclick="location.href='signup.blade.php'">Sign up</button> 
-  </form>
+  </form> 
   </body>
 </html>
-  
