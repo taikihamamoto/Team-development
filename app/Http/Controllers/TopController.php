@@ -10,4 +10,5 @@ class TopController extends Controller
     {
         return view("articles.top");
     }
+
 }

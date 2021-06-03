@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', "TopController@index");
 
-Route::get('/loginform.blade.php', "LoginFormController@index");
 
-Route::get('/signup.blade.php', "SignUpController@index");
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', "TopController@index")->name('top_page');
+
+Route::get('/submission', "SubmissionController@index")->name('submission_page');
+
+Route::post('/store', "SubmissionController@exeStore")->name('store');
