@@ -91,7 +91,9 @@ section {
 /*テキスト関連*/
 .txt-center {
   text-align: center;
+
   margin-bottom: 0px;
+
 }
 
 .txt-lead {
@@ -495,4 +497,5 @@ section {
   text-align: center;
   padding-top: 40px;
   background-color: #596680;
+
 }
