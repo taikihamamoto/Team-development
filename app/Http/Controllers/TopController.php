@@ -17,4 +17,5 @@ class TopController extends Controller
         ['submission' => $submission]
     );
     }
+
 }

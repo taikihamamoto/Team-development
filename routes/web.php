@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -31,3 +32,4 @@ Route::get('list_page', "ListController@index")->name('list_page');
 Route::get('detail/{id}', "DetailController@index")->name('detail_page');
 
 Route::get('remittance_page', "RemittanceController@index")->name('remittance_page');
+
