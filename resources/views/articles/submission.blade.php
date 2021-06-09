@@ -10,6 +10,38 @@
 
 <body>
   <script src="{{ asset('js/script.js') }}"></script>
+  <ul style="color: red;">
+    @if ($errors->has('main_title'))
+    <li>{{ $errors->first('main_title') }}</li>
+    @endif
+    @if ($errors->has('title_1'))
+    <li>{{ $errors->first('title_1') }}</li>
+    @endif
+    @if ($errors->has('text_1'))
+    <li>{{ $errors->first('text_1') }}</li>
+    @endif
+    @if ($errors->has('title_2'))
+    <li>{{ $errors->first('title_2') }}</li>
+    @endif
+    @if ($errors->has('text_2'))
+    <li>{{ $errors->first('text_2') }}</li>
+    @endif
+    @if ($errors->has('title_3'))
+    <li>{{ $errors->first('title_3') }}</li>
+    @endif
+    @if ($errors->has('text_3'))
+    <li>{{ $errors->first('text_3') }}</li>
+    @endif
+    @if ($errors->has('image'))
+    <li>{{ $errors->first('image') }}</li>
+    @endif
+    @if ($errors->has('money_goals'))
+    <li>{{ $errors->first('money_goals') }}</li>
+    @endif
+    @if ($errors->has('reception_deadline'))
+    <li>{{ $errors->first('reception_deadline') }}</li>
+    @endif
+  </ul>
   <form action="{{ route('store') }}" method="post" enctype="multipart/form-data">
     @csrf
     <input name="main_title" type="text" value="">

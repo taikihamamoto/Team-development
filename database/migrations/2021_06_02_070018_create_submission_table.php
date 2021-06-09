@@ -23,8 +23,8 @@ class CreateSubmissionTable extends Migration
             $table->string('text_2');
             $table->string('title_3');
             $table->string('text_3');
-            $table->string('image');
-            $table->string('image_path');
+            $table->string('image_name')->nullable();
+            $table->string('image_path')->nullable();
             $table->integer('money_goals');
             $table->dateTime('reception_deadline');
             $table->timestamps();

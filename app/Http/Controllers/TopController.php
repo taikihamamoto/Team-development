@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Submission;
 use Illuminate\Http\Request;
+use App\Http\Requests\SubmissionRequest;
 
 class TopController extends Controller
 {
     public function index()
     {
-        return view("articles.top");
+        $submission = Submission::orderBy('id', 'desc')
+                                        ->limit(3)->get();
+        return view(
+            "articles.top",
+        ['submission' => $submission]
+    );
     }
 }

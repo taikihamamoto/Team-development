@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Submission;
-use Illuminate\Http\Request;
 use App\Http\Requests\SubmissionRequest;
+use Illuminate\Support\Facades\Auth;
 
 class SubmissionController extends Controller
 {
@@ -13,37 +13,35 @@ class SubmissionController extends Controller
     {
         return view("articles.submission");
     }
-    
+
     public function exeStore(SubmissionRequest $request)
     {
-        var_dump($request);
         // 画像を受け取る
         $upload_image = $request->file('image');
-
-        if($upload_image) {
-            //アップロードされた画像を保存
-            $path = $upload_image->store('images','public');
-            // 画像の保存に成功したらDBに記録する
-            if($path){
-                Submission::create([
-                    "image" => $upload_image->getClientOriginalName(),
-                    "image_path" => $path
-                ]);
-            }
-        }
+        //アップロードされた画像を保存
+        $path = $upload_image->store('images', 'public');
         //ブログのデータ受け取る
         $inputs = $request->all();
-
+        
+        $inputs['user_id'] = Auth::id();
+        // 画像データを格納
+        $image_data = array(
+            'image' => $upload_image->getClientOriginalName(),
+            'image_path' => $path
+        );
+        // 画像データを$inputsに追加する
+        $input_contents = array_merge($inputs, $image_data);
+        // データベース接続
         \DB::beginTransaction();
-        try{
+        try {
             //ブログを登録する
-            Submission::create($inputs);
+            Submission::create($input_contents);
             \DB::commit();
-        } catch(\Throwable $e) {
+        } catch (\Throwable $e) {
             \DB::rollback();
             abort(500);
         }
 
-        return redirect(route('top_page'));
+        return redirect()->route('top_page');
     }
 }
