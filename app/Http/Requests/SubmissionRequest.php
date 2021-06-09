@@ -24,16 +24,17 @@ class SubmissionRequest extends FormRequest
     public function rules()
     {
         return [
-            'main_title' => 'required|min:5',
-            'title_1' => 'required|min:5',
-            'text_1' => 'required|min:5',
-            'title_2' => 'required|min:5',
-            'text_2' => 'required|min:5',
-            'title_3' => 'required|min:5',
-            'text_3' => 'required|min:5',
-            'image' => 'required',
-            'money_goals' => 'required',
-            'reception_deadline' => 'required',
+            'user_id' => '',
+            'main_title' => 'required',
+            'title_1' => 'required',
+            'text_1' => 'required',
+            'title_2' => 'required',
+            'text_2' => 'required',
+            'title_3' => 'required',
+            'text_3' => 'required',
+            'image' => 'image|required',
+            'money_goals' => 'required|',
+            'reception_deadline' => 'required|after:yesterday'
         ];
     }
 }

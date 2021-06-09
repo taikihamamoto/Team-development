@@ -28,7 +28,7 @@
               <a href="#plan">Plan<br>プラン</a>
             </li>
             <li class="gnav-item">
-              <a href="#contact">Contact<br>コンタクト</a>
+              <a href="{{ route('list_page') }}">List<br>一覧</a>
             </li>
             @guest
             <li class="gnav-item">
@@ -39,6 +39,10 @@
             </li>
             @endif
             @auth
+            <li class="gnav-item">
+              <a href="{{ route('submission_page') }}">Submission<br>新規投稿</a>
+            </li>
+            <li class="gnav-item">
             <li class="gnav-item">
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="logoutChk();event.preventDefault();document.getElementById('logout-form').submit();">
@@ -63,7 +67,7 @@
           <a href="#plan">Plan<br>プラン</a>
         </li>
         <li class="gnav-item">
-          <a href="#contact">Contact<br>コンタクト</a>
+          <a href="{{ route('list_page') }}">List<br>一覧</a>
         </li>
         @guest
         <li class="gnav-item">
@@ -75,7 +79,7 @@
         @endif
         @auth
         <li class="gnav-item">
-        <a href="{{ route('submission_page') }}">Submission<br>新規投稿</a>
+          <a href="{{ route('submission_page') }}">Submission<br>新規投稿</a>
         </li>
         <li class="gnav-item">
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -94,14 +98,14 @@
     </div>
   </header>
   <main>
-    @auth
-    {{ Auth::user()->name }}
-    @endif
     <section id="mv" class="mv-area">
       <h1 class="mv-title">各地のお祭りを支援できる<br class="sp-only">クラウドファウンディングサイト</h1>
       <!--ボタン押したらログインフォームに飛ぶように-->
       @guest
       <button type="button" onclick="location.href='/login'" class="btn btn-reserve">ログインはこちら</button>
+      @endif
+      @auth
+      <button type="button" onclick="location.href='list_page'" class="btn btn-reserve">募集一覧はこちら</button>
       @endif
     </section>
 
@@ -140,50 +144,26 @@
             -->
       </ul>
     </section>
-
     <section id="plan" class="plan-area">
       <div class="inner">
         <h2 class="h2-title">Plan</h2>
         <h3>ご利用プラン</h3>
         <p class="txt-center">様々なイベントをご用意しております。</p>
         <ul class="plan-content">
+      @foreach($submission as $submission)
           <li class="plan-item">
-            <img src="//img/img-plan_01.jpg" alt="Aプラン">
+            <img src="/storage/{{ $submission->image_path }}" alt="Aプラン">
             <div class="plan-info">
-              <h4 class="plan-title">Aプラン</h4>
-              <p>Aプランです。</p>
+              <h4 class="plan-title">{{ $submission->main_title }}</h4>
+              <p>{{ $submission->money_goals }}円</p>
               <ul class="plan-list">
-                <li>詳細1</li>
-                <li>詳細２</li>
+                <li>{{ $submission->title_1 }}</li>
+                <li>{{ $submission->title_2 }}</li>
               </ul>
               <p class="plan-price">支援</p>
             </div>
           </li>
-          <li class="plan-item">
-            <img src="//img/img-plan_02.jpg" alt="Bプラン">
-            <div class="plan-info">
-              <h4 class="plan-title">Bプラン</h4>
-              <p>Bプランです。</p>
-              <ul class="plan-list">
-                <li>詳細1</li>
-                <li>詳細2</li>
-              </ul>
-              <p class="plan-price">支援</p>
-            </div>
-          </li>
-          <li class="plan-item">
-            <img src="//img/img-plan_03.jpg" alt="Cプラン">
-            <div class="plan-info">
-              <h4 class="plan-title">Cプラン</h4>
-              <p>Cプランです。</p>
-              <ul class="plan-list">
-                <li>詳細1</li>
-                <li>詳細2</li>
-              </ul>
-              <p class="plan-price">支援</p>
-            </div>
-          </li>
-
+      @endforeach
         </ul>
         <!--ボタン押したらログインフォームに飛ぶように-->
         @guest
