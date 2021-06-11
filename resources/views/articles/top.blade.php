@@ -83,7 +83,7 @@
         </li>
         <li class="gnav-item">
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="{{ route('logout') }}" onclick="logoutChk();event.preventDefault();document.getElementById('logout-form').submit();">
+            <a class="dropdown-item" href="" onclick="logoutChk();event.preventDefault();document.getElementById('logout-form').submit();">
               {{ __('Logout') }}
               <br>{{ __('ログアウト') }}
             </a>
@@ -160,7 +160,9 @@
                 <li>{{ $submission->title_1 }}</li>
                 <li>{{ $submission->title_2 }}</li>
               </ul>
-              <p class="plan-price">支援</p>
+              <div class="btn-div">
+                        <button type="button" class="detail-btn" onclick="location.href='/detail/{{ $submission->id }}'">支援</button>
+                    </div>
             </div>
           </li>
       @endforeach
