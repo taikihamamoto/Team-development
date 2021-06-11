@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/', "TopController@index")->name('top_page');
+
+Route::get('/submission_page', "SubmissionController@index")->name('submission_page');
+
+Route::post('/store', "SubmissionController@exeStore")->name('store');
+
+Route::get('list_page', "ListController@index")->name('list_page');
+
+Route::get('detail/{id}', "DetailController@index")->name('detail_page');
+
+Route::get('remittance_page', "RemittanceController@index")->name('remittance_page');
+
