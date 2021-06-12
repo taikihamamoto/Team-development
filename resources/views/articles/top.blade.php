@@ -152,7 +152,7 @@
         <ul class="plan-content">
       @foreach($submission as $submission)
           <li class="plan-item">
-            <img src="{{ $submission->image_path }}" alt="Aプラン">
+            <img src="/{{ $submission->image_path }}" alt="Aプラン">
             <div class="plan-info">
               <h4 class="plan-title">{{ $submission->main_title }}</h4>
               <p>{{ $submission->money_goals }}円</p>
